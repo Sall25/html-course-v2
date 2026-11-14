@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Leçon 09 — aperçu</title>
+  <title>Texts</title>
   <style>
     /* ---- réglages de base ---- */
     * {
@@ -16,578 +17,81 @@
       margin: 0;
     }
 
-    /* ---- la barre de navigation ---- */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      padding: 16px 40px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    main {
+      margin: 24px auto 0;
+      max-width: 600px;
     }
 
-    .logo {
-      color: black;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .logo-carre {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background-color: rgb(121, 82, 179);
-    }
-
-    .liens {
-      display: flex;
-      gap: 28px;
-    }
-
-    .liens a {
-      color: rgb(108, 117, 125);
-      text-decoration: none;
-    }
-
-    .liens a:hover {
-      color: black;
-    }
-
-    .liens a.actif {
-      color: rgb(121, 82, 179);
-      font-weight: bold;
-    }
-
-    /* ---- le titre de la page ---- */
-    .entete {
+    main h1 {
+      color: #263445;
       text-align: center;
-      padding: 48px 20px 32px;
+
     }
 
-    .entete h1 {
-      margin: 0 0 8px;
-      font-size: 36px;
+    .exercise-list {
+      list-style: none;
+      padding: 0;
     }
 
-    .entete p {
-      margin: 0;
-      color: rgb(108, 117, 125);
-    }
 
-    /* ---- la rangée de cartes ---- */
-    .cartes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px;
-      padding: 0 20px 48px;
-    }
-
-    /* ---- la carte (leçon 04) ---- */
-    .carte {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: white;
-      width: 100%;
-      max-width: 280px;
-      padding: 32px 24px;
-      border-radius: 16px;
-      border-top: 6px solid rgb(121, 82, 179);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
-
-    .avatar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 96px;
-      height: 96px;
-      margin-bottom: 16px;
-      border-radius: 50%;
-      background-color: rgb(121, 82, 179);
-      color: white;
-      font-size: 36px;
-      font-weight: bold;
-    }
-
-    .nom {
-      margin: 0 0 4px;
-      font-size: 22px;
-    }
-
-    .role {
-      margin: 0 0 16px;
-      color: rgb(108, 117, 125);
-    }
-
-    .bio {
-      flex: 1;
-      margin: 0 0 24px;
-      padding-top: 16px;
-      border-top: 1px solid rgb(230, 230, 235);
-      line-height: 1.5;
-    }
-
-    .actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    /* ---- les boutons (leçon 03) ---- */
-    .btn {
-      border: none;
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background-color: rgb(121, 82, 179);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background-color: rgb(94, 60, 145);
-    }
-
-    .btn-outline {
-      background-color: white;
-      color: rgb(121, 82, 179);
-      border: 1px solid rgb(121, 82, 179);
-    }
-
-    .btn-outline:hover {
-      background-color: rgba(121, 82, 179, 0.1);
-    }
-
-    /* ---- variantes de couleur ---- */
-    .carte-verte   { border-top: 6px solid rgb(46, 164, 79); }
-    .avatar-vert   { background-color: rgb(46, 164, 79); }
-
-    .carte-orange  { border-top: 6px solid rgb(255, 121, 0); }
-    .avatar-orange { background-color: rgb(255, 121, 0); }
-
-    /* ---- le formulaire de contact ---- */
-    .formulaire {
-      background-color: white;
-      width: 100%;
-      max-width: 560px;
-      margin: 0 auto 48px;
-      padding: 32px;
-      border-radius: 16px;
-      border-top: 6px solid rgb(121, 82, 179);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .ligne {
-      display: flex;
-      gap: 16px;
-    }
-
-    .champ {
-      flex: 1;
-      margin-bottom: 20px;
-    }
-
-    .champ label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .champ input,
-    .champ select,
-    .champ textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid rgb(206, 212, 218);
-      border-radius: 8px;
-      font: inherit;
-      background-color: white;
-      transition: all 0.2s;
-    }
-
-    .champ textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .champ input:focus,
-    .champ select:focus,
-    .champ textarea:focus {
-      outline: none;
-      border-color: rgb(121, 82, 179);
-      box-shadow: 0 0 0 3px rgba(121, 82, 179, 0.2);
-    }
-
-    .choix {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 20px;
-    }
-
-    .choix label,
-    .case label {
-      font-weight: normal;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .formulaire input[type="radio"],
-    .formulaire input[type="checkbox"] {
-      width: auto;
-      accent-color: rgb(121, 82, 179);
-    }
-
-    .case {
-      margin-bottom: 24px;
-    }
-
-    .btn-envoyer {
-      width: 100%;
-      padding: 14px;
-      font-size: 17px;
-    }
-
-    /* ---- la page d'accueil ---- */
-    .heros {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-      min-height: 400px;
-      padding: 48px 20px;
-      background-color: rgb(121, 82, 179);
-      color: white;
-      text-align: center;
-    }
-
-    .heros h1 {
-      margin: 0;
-      font-size: 44px;
-    }
-
-    .heros p {
-      margin: 0;
-      font-size: 18px;
-      max-width: 520px;
-      line-height: 1.5;
-    }
-
-    .btn-blanc {
-      text-decoration: none;
-      background-color: white;
-      color: rgb(121, 82, 179);
-      padding: 14px 32px;
-      font-size: 18px;
-    }
-
-    .btn-blanc:hover {
-      background-color: rgb(240, 235, 250);
-    }
-
-    .fonctions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      gap: 24px;
-      padding: 48px 20px;
-    }
-
-    .fonction {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 240px;
-      text-align: center;
-    }
-
-    .icone {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background-color: rgb(121, 82, 179);
+    .exercise-list li {
       margin-bottom: 12px;
     }
 
-    .fonction h3 {
-      margin: 0 0 8px;
-    }
-
-    .fonction p {
-      margin: 0;
-      color: rgb(108, 117, 125);
-      line-height: 1.5;
-    }
-
-    /* ---- le pied de page ---- */
-    .pied {
-      text-align: center;
-      padding: 24px 20px;
-      color: rgb(108, 117, 125);
-      font-size: 14px;
-      border-top: 1px solid rgb(230, 230, 235);
-    }
-
-    /* ---- la page article (leçon 09) ---- */
-    .article {
-      background-color: white;
-      width: 100%;
-      max-width: 720px;
-      margin: 40px auto 48px;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      line-height: 1.7;
-    }
-
-    .article h1 {
-      margin: 0 0 8px;
-      font-size: 36px;
-      line-height: 1.2;
-    }
-
-    .article h2 {
-      margin: 32px 0 8px;
-      font-size: 24px;
-    }
-
-    .article h3 {
-      margin: 24px 0 4px;
-      font-size: 18px;
-    }
-
-    .article p {
-      margin: 0 0 16px;
-    }
-
-    .infos {
-      color: rgb(108, 117, 125);
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .article a {
-      color: rgb(121, 82, 179);
-    }
-
-    .article a:hover {
+    .exercise-list a {
+      display: block;
+      padding: 16px 20px;
+      background-color: #f4f6f8;
+      color: #263445;
       text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
 
-    .article ul,
-    .article ol {
-      margin: 0 0 16px;
-      padding-left: 24px;
+    .exercise-list a:hover {
+      background-color: #e8f0fe;
+      border-color: #4285f4;
+      color: #1a73e8;
+      transform: translateX(5px);
     }
 
-    .article li {
-      margin-bottom: 6px;
-    }
-
-    .article img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    .article figure {
-      margin: 24px 0;
-    }
-
-    .article figcaption {
-      margin-top: 8px;
-      text-align: center;
-      font-size: 14px;
-      color: rgb(108, 117, 125);
-      font-style: italic;
-    }
-
-    .article blockquote {
-      margin: 24px 0;
-      padding: 16px 24px;
-      border-left: 4px solid rgb(121, 82, 179);
-      background-color: rgb(245, 242, 250);
-      font-size: 18px;
-      font-style: italic;
-    }
-
-    .article blockquote p {
-      margin: 0 0 8px;
-    }
-
-    .article cite {
-      font-size: 14px;
-      font-style: normal;
-      color: rgb(108, 117, 125);
-    }
-
-    .article code {
-      padding: 2px 6px;
-      border-radius: 4px;
-      background-color: rgb(240, 240, 245);
-      font-family: Consolas, monospace;
-      font-size: 15px;
-    }
-
-    .article mark {
-      background-color: rgb(255, 236, 153);
-      padding: 0 2px;
-    }
-
-    .article hr {
-      margin: 32px 0;
-      border: none;
-      border-top: 1px solid rgb(230, 230, 235);
-    }
-
-    /* ---- tablette et téléphone : moins de 768px ---- */
-    @media (max-width: 768px) {
-      .nav {
-        padding: 16px 20px;
-      }
-
-      .liens {
-        gap: 18px;
-      }
-    }
-
-    /* ---- téléphone : moins de 600px ---- */
-    @media (max-width: 600px) {
-      .nav {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .liens {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .entete {
-        padding: 32px 20px 24px;
-      }
-
-      .entete h1 {
-        font-size: 28px;
-      }
-
-      .heros {
-        min-height: 320px;
-      }
-
-      .heros h1 {
-        font-size: 32px;
-      }
-
-      .article {
-        width: auto;
-        margin: 24px 16px 32px;
-        padding: 24px 20px;
-      }
-
-      .article h1 {
-        font-size: 28px;
-      }
-
-      .carte {
-        max-width: 100%;
-      }
-
-      .formulaire {
-        width: auto;
-        margin: 0 16px 32px;
-        padding: 24px 20px;
-      }
-
-      .ligne {
-        flex-direction: column;
-        gap: 0;
-      }
+    .exercise-list a:focus-visible {
+      outline: 3px solid #4285f4;
+      outline-offset: 3px;
     }
   </style>
 </head>
+
 <body>
-  <nav class="nav">
-    <a href="index.html" class="logo">
-      <div class="logo-carre"></div>
-      Notre asso
-    </a>
-    <div class="liens">
-      <a href="index.html">Accueil</a>
-      <a href="equipe.html">Équipe</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
-
-  <div class="article">
-    <h1>L'atelier HTML du samedi</h1>
-    <p class="infos">Compte rendu · 8 novembre 2026 · par Fatou Ndiaye</p>
-
-    <p>Samedi dernier, <strong>quatorze membres</strong> se sont retrouvés pour notre premier atelier
-    consacré au HTML. Pour beaucoup, c'était la <em>toute première</em> page web de leur vie.</p>
-
-    <figure>
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIj4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiNlZGU3ZjYiLz4KICA8IS0tIHRhYmxlIC0tPgogIDxyZWN0IHg9IjE1MCIgeT0iNDIwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzc5NTJiMyIvPgogIDxyZWN0IHg9IjE5MCIgeT0iNDQ0IiB3aWR0aD0iMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjNWUzYzkxIi8+CiAgPHJlY3QgeD0iOTkwIiB5PSI0NDQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM1ZTNjOTEiLz4KICA8IS0tIGxhcHRvcHMgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyNTAiIHk9IjMwMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxMCIgZmlsbD0iIzJiMmIzYSIvPgogICAgPHJlY3QgeD0iMjYyIiB5PSIzMTIiIHdpZHRoPSIxNzYiIGhlaWdodD0iOTYiIHJ4PSI0IiBmaWxsPSIjZmZmZmZmIi8+CiAgICA8cmVjdCB4PSIyNzYiIHk9IjMyNiIgd2lkdGg9IjkwIiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iIzc5NTJiMyIvPgogICAgPHJlY3QgeD0iMjc2IiB5PSIzNDYiIHdpZHRoPSIxNDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiNjOWJkZTMiLz4KICAgIDxyZWN0IHg9IjI3NiIgeT0iMzYyIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjYzliZGUzIi8+CiAgICA8cmVjdCB4PSIyNzYiIHk9IjM3OCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE4IiByeD0iNSIgZmlsbD0iIzJlYTQ0ZiIvPgogIDwvZz4KICA8Zz4KICAgIDxyZWN0IHg9Ijc1MCIgeT0iMzAwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEyMCIgcng9IjEwIiBmaWxsPSIjMmIyYjNhIi8+CiAgICA8cmVjdCB4PSI3NjIiIHk9IjMxMiIgd2lkdGg9IjE3NiIgaGVpZ2h0PSI5NiIgcng9IjQiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxyZWN0IHg9Ijc3NiIgeT0iMzI2IiB3aWR0aD0iNzAiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSIjZmY3OTAwIi8+CiAgICA8cmVjdCB4PSI3NzYiIHk9IjM0NiIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iI2M5YmRlMyIvPgogICAgPHJlY3QgeD0iNzc2IiB5PSIzNjIiIHdpZHRoPSIxMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiNjOWJkZTMiLz4KICAgIDxyZWN0IHg9Ijc3NiIgeT0iMzc4IiB3aWR0aD0iNjAiIGhlaWdodD0iMTgiIHJ4PSI1IiBmaWxsPSIjMGE2NmMyIi8+CiAgPC9nPgogIDwhLS0gcGVvcGxlIC0tPgogIDxjaXJjbGUgY3g9IjM1MCIgY3k9IjIwMCIgcj0iNDQiIGZpbGw9IiM3OTUyYjMiLz4KICA8cmVjdCB4PSIyOTAiIHk9IjI1MCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI2MCIgcng9IjMwIiBmaWxsPSIjNzk1MmIzIi8+CiAgPGNpcmNsZSBjeD0iODUwIiBjeT0iMjAwIiByPSI0NCIgZmlsbD0iIzJlYTQ0ZiIvPgogIDxyZWN0IHg9Ijc5MCIgeT0iMjUwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iMzAiIGZpbGw9IiMyZWE0NGYiLz4KICA8Y2lyY2xlIGN4PSI2MDAiIGN5PSIxNzAiIHI9IjUwIiBmaWxsPSIjZmY3OTAwIi8+CiAgPHJlY3QgeD0iNTMwIiB5PSIyMjYiIHdpZHRoPSIxNDAiIGhlaWdodD0iODAiIHJ4PSIzNCIgZmlsbD0iI2ZmNzkwMCIvPgogIDwhLS0gYm9hcmQgLS0+CiAgPHJlY3QgeD0iNDcwIiB5PSI2MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI1MCIgcng9IjgiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzc5NTJiMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgPHRleHQgeD0iNjAwIiB5PSI5NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzc5NTJiMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Jmx0O2gxJmd0OzwvdGV4dD4KPC9zdmc+Cg==" alt="Trois participants autour d'une table avec deux ordinateurs portables" width="1200" height="600">
-      <figcaption>Les participants pendant l'exercice sur les titres.</figcaption>
-    </figure>
-
-    <h2>Le programme de la journée</h2>
-    <ol>
-      <li>Découvrir la structure d'une page : <code>&lt;head&gt;</code> et <code>&lt;body&gt;</code>.</li>
-      <li>Écrire des titres et des paragraphes.</li>
-      <li>Ajouter des listes, des liens et une image.</li>
-      <li>Mettre la page en ligne.</li>
-    </ol>
-
-    <h2>Ce que les participants ont appris</h2>
-    <p>Le moment préféré du groupe ? Comprendre qu'<mark>une balise ouverte doit toujours être fermée</mark>.
-    Voici les balises les plus utilisées pendant l'atelier :</p>
-    <ul>
-      <li><code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code> pour les titres ;</li>
-      <li><code>&lt;p&gt;</code> pour les paragraphes ;</li>
-      <li><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code> et <code>&lt;li&gt;</code> pour les listes ;</li>
-      <li><code>&lt;a&gt;</code> pour les liens et <code>&lt;img&gt;</code> pour les images.</li>
+  <main>
+    <h1>Texts</h1>
+    <ul class="exercise-list">
+      <li>
+        <a href="./text/ex1.html">Exemple 1</a>
+      </li>
+      <li>
+        <a href="./text/ex2.html">Exemple 2</a>
+      </li>
+      <li>
+        <a href="./text/ex3.html">Exemple 3</a>
+      </li>
+      <li>
+        <a href="./text/ex4.html">Exemple 4</a>
+      </li>
+      <li>
+        <a href="./text/ex5.html">Exemple 5</a>
+      </li>
+      <li>
+        <a href="./text/ex6.html">Exemple 6</a>
+      </li>
+      <li>
+        <a href="./text/final.html">Final</a>
+      </li>
     </ul>
-
-    <blockquote>
-      <p>« Je pensais que créer un site était réservé aux ingénieurs. En une après-midi, j'ai publié ma première page ! »</p>
-      <cite>— Moussa, participant</cite>
-    </blockquote>
-
-    <h2>Et maintenant ?</h2>
-    <h3>Le prochain atelier</h3>
-    <p>Le prochain atelier, consacré au CSS, aura lieu le <strong>samedi 22 novembre</strong>, de 14&nbsp;h à 17&nbsp;h.
-    Les places sont limitées&nbsp;: inscris-toi depuis la <a href="contact.html">page Contact</a>.</p>
-
-    <h3>Pour aller plus loin</h3>
-    <p>Pour réviser chez toi, la documentation de référence est
-    <a href="https://developer.mozilla.org/fr/docs/Web/HTML" target="_blank" rel="noopener">MDN Web Docs</a>,
-    disponible en français. Une question ? Écris-nous à
-    <a href="mailto:contact@notre-asso.org">contact@notre-asso.org</a>.</p>
-
-    <hr>
-
-    <p><small>Photo : illustration de l'association. Ce compte rendu est publié sous licence libre.</small></p>
-  </div>
-
-  <footer class="pied">
-    © 2026 Notre asso · Fait avec HTML et CSS
-  </footer>
+  </main>
 </body>
+
 </html>
